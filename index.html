@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sprintly – Study in focused sprints</title>
+<meta name="description" content="A focus timer, task list and weekly study log for students.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="logo" href="#top">Sprintly</a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu">Menu</button>
+  <nav id="nav" class="nav">
+    <a href="#timer">Timer</a>
+    <a href="#tasks">Tasks</a>
+    <a href="#progress">Progress</a>
+    <a href="#contact">Feedback</a>
+    <button class="theme-btn" id="themeBtn" aria-pressed="false">Dark mode</button>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="hero-text">
+      <h1>Study in sprints. Finish what you start.</h1>
+      <p>Pick a task, start the clock, and log every finished sprint. Sprintly keeps your week visible so you can see what is actually getting done.</p>
+      <a class="btn" href="#tasks">Plan today's tasks</a>
+    </div>
+
+    <div class="timer-card" id="timer">
+      <div class="modes" role="tablist" aria-label="Timer mode">
+        <button role="tab" aria-selected="true" data-min="25" data-mode="Focus">Focus</button>
+        <button role="tab" aria-selected="false" data-min="5" data-mode="Short break">Short break</button>
+        <button role="tab" aria-selected="false" data-min="15" data-mode="Long break">Long break</button>
+      </div>
+      <div class="ring">
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <circle class="ring-bg" cx="100" cy="100" r="90"/>
+          <circle class="ring-fg" id="ringFg" cx="100" cy="100" r="90"/>
+        </svg>
+        <div class="time" id="time" role="timer" aria-live="off">25:00</div>
+      </div>
+      <p class="timer-label" id="timerLabel">Focus · ready when you are</p>
+      <div class="timer-actions">
+        <button class="btn" id="startBtn">Start</button>
+        <button class="btn ghost" id="resetBtn">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tasks">
+    <h2>Today's tasks</h2>
+    <form class="task-form" id="taskForm">
+      <label class="sr" for="taskInput">New task</label>
+      <input id="taskInput" type="text" placeholder="e.g. Revise neural network basics" maxlength="80" autocomplete="off" required>
+      <button class="btn" type="submit">Add task</button>
+    </form>
+    <div class="filters" role="group" aria-label="Filter tasks">
+      <button class="chip active" data-filter="all">All</button>
+      <button class="chip" data-filter="open">To do</button>
+      <button class="chip" data-filter="done">Done</button>
+      <span class="count" id="taskCount" aria-live="polite"></span>
+    </div>
+    <ul class="task-list" id="taskList"></ul>
+  </section>
+
+  <section class="section" id="progress">
+    <h2>Your week in sprints</h2>
+    <p class="lead">Each finished focus sprint adds to today's bar. Tap a bar to see the day's total.</p>
+    <div class="chart" id="chart" role="img" aria-label="Sprints completed per day this week"></div>
+    <p class="chart-note" id="chartNote" aria-live="polite">Total this week: 0 sprints</p>
+    <div class="timer-actions">
+      <button class="btn ghost" id="logBtn">Log a sprint manually</button>
+      <button class="btn ghost" id="clearBtn">Clear week</button>
+    </div>
+  </section>
+
+  <section class="section" id="why">
+    <h2>Why it works</h2>
+    <ul class="points">
+      <li><strong>One thing at a time.</strong> A fixed 25-minute block removes the question of when to stop.</li>
+      <li><strong>Breaks are scheduled.</strong> Short and long breaks are built into the timer.</li>
+      <li><strong>Progress you can see.</strong> The weekly chart turns effort into something you can check.</li>
+    </ul>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Send feedback</h2>
+    <form class="contact" id="contactForm" novalidate>
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" autocomplete="name">
+      <span class="err" id="nameErr"></span>
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email">
+      <span class="err" id="emailErr"></span>
+      <label for="msg">Message</label>
+      <textarea id="msg" name="msg" rows="4"></textarea>
+      <span class="err" id="msgErr"></span>
+      <button class="btn" type="submit">Send feedback</button>
+      <p class="ok" id="formOk" role="status"></p>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Sprintly · built with HTML, CSS and vanilla JavaScript.</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
